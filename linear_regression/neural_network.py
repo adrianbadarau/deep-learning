@@ -30,11 +30,6 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 
-# TODO: We haven't provided the sigmoid_prime function like we did in
-#       the previous lesson to encourage you to come up with a more
-#       efficient solution. If you need a hint, check out the comments
-#       in solution.py from the previous lecture.
-
 # Use to same seed to make debugging easier
 np.random.seed(42)
 
@@ -54,24 +49,21 @@ for e in range(epochs):
     for x, y in m:
         # Loop through all records, x is the input, y is the target
         h = np.dot(x, weights)
-        # Note: We haven't included the h variable from the previous
-        #       lesson. You can add it if you want, or you can calculate
-        #       the h together with the output
 
-        # TODO: Calculate the output
+        # Calculate the output
         output = sigmoid(h)
 
-        # TODO: Calculate the error
+        # Calculate the error
         error = y - output
 
-        # TODO: Calculate the error term
+        # Calculate the error term
         error_term = error * output * (1 - output)
 
-        # TODO: Calculate the change in weights for this sample
+        # Calculate the change in weights for this sample
         #       and add it to the total weight change
         del_w += error_term * x
 
-    # TODO: Update weights using the learning rate and the average change in weights
+    # Update weights using the learning rate and the average change in weights
     weights += learnrate * del_w / n_records
 
     # Printing out the mean square error on the training set
